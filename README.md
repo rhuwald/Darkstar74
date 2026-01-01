@@ -1,8 +1,10 @@
 # Darkstar74
-Darkstar74 - a retrostyle, vectorbased asteroids clond (written in python)
+Darkstar74 - a retrostyle, vectorbased asteroids clone (written in python)
 A game, created especially for the Pimoroni Presto with attached QwSTPad.
 
-The tank is steered with **left** & **right**. To fire, press the **A** button. To thrust, press the **X** button.
+The spaceship is steered with **left** & **right**. To fire, press the **A** button. To thrust, press the **X** button.
+
+The design of the font, asteroids, ufo and spaceship is taken from the original game asteroids (made by atari in the 1970s). See [here](https://computerarcheology.com/Arcade/Asteroids/DVG.html)
 
 - [Required Hardware](#required-hardware)
 - [Installation](#installation)
