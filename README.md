@@ -1,10 +1,9 @@
 # Darkstar74
 Darkstar74 - a retrostyle, vectorbased asteroids clone (written in python)
-A game, created especially for the Pimoroni Presto with attached QwSTPad.
 
-The spaceship is steered with **left** & **right**. To fire, press the **A** button. To thrust, press the **X** button.
+A game, created especially for the Pimoroni Presto with attached QwSTPad. The 7 LEDs mounted on the back are used to create an ambilight effect. The spaceship is steered with **left** & **right**. To fire, press the **A** button. To thrust, press the **X** button.
 
-The design of the font, asteroids, ufo and spaceship is taken from the original game asteroids (made by atari in the 1970s). See [https://computerarcheology.com/Arcade/Asteroids/DVG.html](https://computerarcheology.com/Arcade/Asteroids/DVG.html).
+The design of the font, asteroids, ufo and spaceship is taken from the original game *Asteroids* (developed in 1979 by Lyle Rains and Ed Logg for Atari). See [https://computerarcheology.com/Arcade/Asteroids/DVG.html](https://computerarcheology.com/Arcade/Asteroids/DVG.html).
 
 - [Required Hardware](#required-hardware)
 - [Installation](#installation)
@@ -12,7 +11,11 @@ The design of the font, asteroids, ufo and spaceship is taken from the original 
 
 ## Required Hardware
 * Pimoroni Presto
-* QwSTPad (with id 0)
+* QwSTPad (with id 0 - can be changed in darkstar74_presto_240.py)
+```python
+I2C_PINS      = {"id": 0, "sda": 40, "scl": 41} # The I2C pins the QwSTPad is connected to
+I2C_ADDRESS   = ADDRESSES[0]                    # The I2C address of the connected QwSTPad
+```
 * Power (battery or AC adapter)
 
 ## Installation
