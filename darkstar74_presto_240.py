@@ -1,5 +1,5 @@
 # Darkstar74
-# (c) Ralf Huwald 2023-2025
+# (c) Ralf Huwald 2023-2026
 #
 # Version für Pimoroni Presto (4" Display, 240x240 loRes Version)
 
@@ -15,7 +15,7 @@ import time
 
 
 # Auf Wunsch CPU-Takt erhöhen
-# freq(264_000_000)
+# freq(250_000_000)
 
 print('Programm          : Darkstar74 (4" Presto Version 240x240)\n')
 print(f"Machine-Id        : {machine.unique_id()}")
@@ -29,10 +29,10 @@ AMBILIGHT            = const(True)    # True = Ambilight bei Explosion
 ASTEROID_SPEED       = const(.1)      # 2
 ASTEROID_SCALE_MULTI = const(.3)      # .5
 LASER_TYPE_DOUBLE    = const(False)   # True = Double Laser, False = single Laser
-LASER_MAX_COUNT      = const(4)       # 4 Max. Anzahl gleichzeitige Laser
+LASER_MAX_COUNT      = const(6)       # 4 Max. Anzahl gleichzeitige Laser
 LASER_LIFETIME       = const(35)      # 35
 LASER_RAPID_FIRE     = const(True)    # False
-LASER_COOLDOWN_MS    = const(50)      # 100ms to "cooldown" Laser -> max. 10 shot/sec
+LASER_COOLDOWN_MS    = const(333)     # 100ms to "cooldown" Laser -> max. 10 shot/sec
 LASER_SPEED          = const(4)       # 4
 SHIP_MAX_SPEED       = const(3)       # 3
 SHIP_COUNT           = const(3)       # 3
@@ -50,7 +50,6 @@ SCALE_1       = const(1)
 SCALE_2       = const(2)
 
 I2C_PINS      = {"id": 0, "sda": 40, "scl": 41} # The I2C pins the QwSTPad is connected to
-I2C_ADDRESS   = ADDRESSES[0]                    # The I2C address of the connected QwSTPad
 
 presto        = Presto(full_res=False, ambient_light=False, layers=2)
 display       = presto.display
@@ -1231,9 +1230,17 @@ KEY_RIGHT  = "R" # Cursor right
 
 
 # QwST-Pad initialisieren
-try:
-    qwstpad = QwSTPad(I2C(**I2C_PINS), I2C_ADDRESS)
-except OSError:
+QWSTPAD = None #                                               Erstes gefundenes Pad
+for _QWSTPAD in (0,1,2,3):
+    _I2C_ADDRESS = ADDRESSES[_QWSTPAD] #                       the I2C address of the connected QwSTPad
+    try:
+        qwstpad     = QwSTPad(I2C(**I2C_PINS), _I2C_ADDRESS) # try to connect to QwSTPad(0..3)
+        QWSTPAD     = _QWSTPAD
+        I2C_ADDRESS = _I2C_ADDRESS
+    except OSError:
+        pass
+
+if QWSTPAD == None:
     text_len = dvg.get_text_len("QWSTPAD", SCALE_1)
     dvg.set_cursor(WIDTH / 2 - (text_len / 2), HEIGHT / 2 - 16)
     dvg.draw_text("QWSTPAD", SCALE_1, RED, None)
@@ -1538,3 +1545,4 @@ while True:
             show_post_level()
     
     show_gameover()
+
