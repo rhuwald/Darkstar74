@@ -6,8 +6,8 @@ A game, created especially for the Pimoroni Presto with attached QwSTPad. The 7 
 The design of the font, asteroids, ufo and spaceship is taken from the original game *Asteroids* (developed in 1979 by Lyle Rains and Ed Logg for Atari). See [https://computerarcheology.com/Arcade/Asteroids/DVG.html](https://computerarcheology.com/Arcade/Asteroids/DVG.html).
 
 <img src="screenshots/img_8338.jpeg" width="30%" align="left" alt="Screenshot 1">
-<img src="screenshots/img_8345.jpeg" width="30%" align="left" alt="Screenshot 1">
-<img src="screenshots/img_8346.jpeg" width="30%" alt="Screenshot 1">
+<img src="screenshots/img_8345.jpeg" width="30%" align="left" alt="Screenshot 2">
+<img src="screenshots/img_8346.jpeg" width="30%" alt="Screenshot 3">
 
 - [Required Hardware](#required-hardware)
 - [Installation](#installation)
